@@ -6,22 +6,17 @@ class App extends React.Component {
     super();
 
     this.state = {
-      monsters: [
-        {
-          name: "Frankenstein",
-          id: "asr1"
-        },
-        {
-          name: "Dracula",
-          id: "asr2"
-        },
-        {
-          name: "Zombie",
-          id: "asr3"
-        },
-      ]
+      monsters: []
     };
   }
+
+  // life cycle methods: methods that get called in different stages when components get rendered
+  componentDidMount() { // when components get rendered for the first time
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(res => res.json())
+      .then(users => this.setState({ monsters: users }))
+  }
+
   render() {
     return (
       <div className="App">
