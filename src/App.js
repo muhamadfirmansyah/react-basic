@@ -7,17 +7,33 @@ class App extends Component {
     super();
 
     this.state = {
-      string: "Hi, World!"
+      monsters: [
+        {
+          name: "Frankenstein",
+          id: "asr1"
+        },
+        {
+          name: "Dracula",
+          id: "asr2"
+        },
+        {
+          name: "Zombie",
+          id: "asr3"
+        },
+      ]
     };
   }
   render() {
     return (
+      // className to distinguish between class in js and class in html
+      // {} is javascript expression
+      // this.state.string is a variable
+      // You cannot modified state without using this keyword
+      // component will be rerendered when state is changing
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>{ this.state.string }</p>
-          <button onClick={() => this.setState({ string: 'Hi, world changed!' })}>Change Text</button>
-        </header>
+        { this.state.monsters.map(monster => (
+          <h1 key={monster.id}>{ monster.name }</h1>
+        )) }
       </div>
     )
   }
